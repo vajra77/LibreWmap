@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="refresh" content="15">
+    <title>{{ map.title }}</title>
+    <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/fontawesome/css/solid.css" />
+    <link rel="stylesheet" href="{{ map.css }}" />
+  </head>
+  <body>
+    <main>
+	<div class="sidebar">
+	<h1>{{ map.title }}</h1>
+	</div>
+	<img class="container" src="{{ map.image }}">
+
+	{% for sensor in map.sensors -%}
+	<span class="{{ sensor.name }}">
+	    {{ sensor.html }}
+        <img class="overlay" src="{{ map.nms_url }}/graph.php?id={{ sensor.id }}&type=sensor_{{ sensor.type }}&height=287&width=616">
+	</span>
+	{% endfor -%}
+    </main>
+  </body>
+</html>

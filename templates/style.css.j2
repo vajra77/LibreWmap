@@ -1,0 +1,59 @@
+.overlay {
+  	position: relative;
+  	opacity: 1;
+  	display: none;
+	animation: none;
+}
+
+.sidebar {
+	position: absolute;
+	top: 10px;
+	left: 1440px;
+	z-index: 999;
+	background-color: #F5CDC8;
+	padding: 10px;
+	border: 1px solid #660000;
+}
+
+.sidebar h1 {
+	color: #660000;
+}
+
+.sidebar a {
+	display: inline;
+}
+
+.sidebar a:hover {
+	background-color: #FFCCC0;
+}
+
+span:hover .overlay {
+	position: relative;
+	left: -300px;
+	width: 616px;
+	opacity: 1;
+	background-color: white;
+	border: 1px solid grey;
+	display: inline-block;
+	z-index: 999;
+	animation: none;
+}
+
+img.container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 1280px;
+	opacity: 0.6;
+}
+
+{% for sensor in map.sensors -%}
+    {{ sensor.css }}
+{% endfor -%}
+
+@keyframes blink {
+	0%, 100% {opacity: 0;}
+	25%, 75% {opacity: 0.5;}
+	50% {opacity: 1;}
+}
