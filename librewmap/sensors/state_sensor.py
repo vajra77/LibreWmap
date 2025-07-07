@@ -1,8 +1,8 @@
 from .sensor import Sensor
 
 
-class BinarySensor(Sensor):
+class StateSensor(Sensor):
 
     @property
     def type(self) -> str:
-        return "binary"
+        return "state"
