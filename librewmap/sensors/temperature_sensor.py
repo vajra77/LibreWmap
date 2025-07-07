@@ -95,8 +95,8 @@ class TemperatureSensor(Sensor):
 
         t_prev = data['graphs'][0]['sensor_prev']
         t_cur = data['graphs'][0]['sensor_current']
-        t_warn = data['graphs'][0]['sensor_limit_warn']
-        t_crit = data['graphs'][0]['sensor_limit']
+        t_warn = data['graphs'][0]['sensor_limit_warn'] or 30.0
+        t_crit = data['graphs'][0]['sensor_limit'] or 35.0
 
         if t_prev > t_cur:
             self.trend = -1
