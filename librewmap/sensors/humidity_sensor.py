@@ -87,7 +87,7 @@ class HumiditySensor(Sensor):
 
 
     def update(self, api_url, api_key):
-        url = f"{api_url}/devices/{self.device_id}/health/temperature/{self.id}"
+        url = f"{api_url}/devices/{self.device_id}/health/humidity/{self.id}"
         response = requests.get(url=url, headers={"X-Auth-Token": api_key})
         data = response.json()
 
