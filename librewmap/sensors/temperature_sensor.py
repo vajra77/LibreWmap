@@ -70,7 +70,7 @@ class TemperatureSensor(Sensor):
             height: 80px
             """
 
-        css += "}}"
+        css += "}"
 
         return css
 
