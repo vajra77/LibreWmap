@@ -41,7 +41,7 @@ class Map:
         )
 
         for sconf in conf['sensors']:
-            match conf['type']:
+            match sconf['type']:
                 case 'temperature':
                     sensor = TemperatureSensor.from_json(sconf)
                 case 'humidity':
