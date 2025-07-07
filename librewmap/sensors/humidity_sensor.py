@@ -11,63 +11,66 @@ class HumiditySensor(Sensor):
     @property
     def css(self) -> str:
         css = f"""
-            .{self.name} {{
-                position: absolute;
-                top: {self.top}px;
-                left: {self.left}px;
-            """
+        .{self.name} {{
+            position: absolute;
+            top: {self.top}px;
+            left: {self.left}px;
+        """
 
         if self.alarm == 'ok':
             css += """
-                    height: 80px;
-                    width: 80px;
-                    animation: blink 3s linear infinite; 
-                    background: radial-gradient(rgb(205,221,255,1.0), rgb(255,255,255,0.2));
-                """
+            height: 80px;
+            width: 80px;
+            animation: blink 3s linear infinite; 
+            background: radial-gradient(rgb(205,221,255,1.0), rgb(255,255,255,0.2));
+            """
         elif self.alarm == 'warn':
             css += """
-                    height: 100px;
-                    width: 100px;
-                    animation: blink 1.5s linear infinite; 
-                    background: radial-gradient(rgb(36,57,165,1.0), rgb(255,255,255,0.2));
-                """
+            height: 100px;
+            width: 100px;
+            animation: blink 1.5s linear infinite; 
+            background: radial-gradient(rgb(36,57,165,1.0), rgb(255,255,255,0.2));
+            """
         else:
             css += """
-                    height: 120px;
-                    width: 120px;
-                    animation: blink 0.5s linear infinite; 
-                    background: radial-gradient(rgb(74,141,255,1.0), rgb(255,255,255,0.2));
-                """
+            height: 120px;
+            width: 120px;
+            animation: blink 0.5s linear infinite; 
+            background: radial-gradient(rgb(74,141,255,1.0), rgb(255,255,255,0.2));
+            """
 
         css += f"""
-                border-radius: 50%;
-                display: inline-block;
-            }} 
+        border-radius: 50%;
+        display: inline-block;
+        }} 
 
-            .{self.name}:hover {{
-                animation: none;
-            }}
+        .{self.name}:hover {{
+            animation: none;
+        }}
 
-            .{self.name} p {{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-weight: bold;
-                color: white;
-            """
+        .{self.name} p {{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+        """
 
         if self.alarm == 'ok':
             css += """
-                        height: 40px;
-                """
+            height: 40px;
+            """
         elif self.alarm == 'warn':
             css += """
-                    height: 60px
-                """
+            height: 60px
+            """
         else:
             css += """
-                    height: 80px
-                """
+            height: 80px
+            """
+
+        css += "}"
+
         return css
 
     @property
