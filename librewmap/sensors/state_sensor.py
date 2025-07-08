@@ -34,9 +34,9 @@ class StateSensor(Sensor):
             # background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
             # """
             css += """
-            width: 300px;
-            height: 300px;
-            background: red linear-gradient(red, blue);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
             clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
             """
         elif self.alarm == 'warn':
