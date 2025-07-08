@@ -10,7 +10,11 @@ class StateSensor(Sensor):
 
     @property
     def html(self) -> str:
-        result = f"<p><i class='fa-solid fa-bell'></i>&nbsp;{self.name}</p>\n"
+        if self.alarm == 'warn' or self.alarm == 'crit':
+            result = f"<p><i class='fa-solid fa-bell'></i>{self.name}</p>\n"
+        else:
+            result = f"<p>{self.name}</p>\n"
+
         return result
 
     @property
