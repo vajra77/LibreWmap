@@ -27,11 +27,17 @@ class StateSensor(Sensor):
         """
 
         if self.alarm == 'ok':
+            # css += """
+            # height: 80px;
+            # width: 80px;
+            # animation: blink 3s linear infinite;
+            # background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
+            # """
             css += """
-            height: 80px;
-            width: 80px;
-            animation: blink 3s linear infinite; 
-            background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
+            width: 300px;
+            height: 300px;
+            background: red linear-gradient(red, blue);
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
             """
         elif self.alarm == 'warn':
             css += """
