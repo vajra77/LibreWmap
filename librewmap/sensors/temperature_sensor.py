@@ -95,8 +95,8 @@ class TemperatureSensor(Sensor):
 
         t_prev = data['graphs'][0]['sensor_prev']
         t_cur = data['graphs'][0]['sensor_current']
-        t_warn = data['graphs'][0]['sensor_limit_warn']
-        t_crit = data['graphs'][0]['sensor_limit']
+        t_warn = data['graphs'][0]['sensor_limit_warn'] or None
+        t_crit = data['graphs'][0]['sensor_limit'] or None
 
         if t_warn is None:
             t_warn = 30.0
