@@ -42,8 +42,8 @@ class StateSensor(Sensor):
             """
         else:
             css += """
-            height: 120px;
-            width: 120px;
+            height: 100px;
+            width: 100px;
             animation: blink 0.5s linear infinite; 
             background: radial-gradient(rgb(176,58,46,1.0), rgb(255,255,255,0.2));
             """
@@ -60,7 +60,7 @@ class StateSensor(Sensor):
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            color: black;
+            color: white;
         }}
         """
 
