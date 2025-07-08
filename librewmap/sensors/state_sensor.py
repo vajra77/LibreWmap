@@ -31,7 +31,7 @@ class StateSensor(Sensor):
             height: 80px;
             width: 80px;
             animation: blink 3s linear infinite; 
-            background: radial-gradient(rgb(213,219,219,1.0), rgb(255,255,255,0.2));
+            background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
             """
         elif self.alarm == 'warn':
             css += """
