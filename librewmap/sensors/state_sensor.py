@@ -10,7 +10,7 @@ class StateSensor(Sensor):
 
     @property
     def html(self) -> str:
-        result = f"<p><i class='fa-solid fa-bell'></i>&nbsp;{self.last}</p>\n"
+        result = f"<p><i class='fa-solid fa-bell'></i>&nbsp;{self.name}</p>\n"
         return result
 
     @property
