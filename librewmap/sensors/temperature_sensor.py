@@ -1,4 +1,5 @@
 import requests
+from pprint import pprint
 from .sensor import Sensor
 
 
@@ -92,6 +93,7 @@ class TemperatureSensor(Sensor):
         url = f"{api_url}/devices/{self.device_id}/health/temperature/{self.id}"
         response = requests.get(url=url, headers={"X-Auth-Token": api_key})
         data = response.json()
+        pprint(data)
 
         t_prev = data['graphs'][0]['sensor_prev']
         t_cur = data['graphs'][0]['sensor_current']
