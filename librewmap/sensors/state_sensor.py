@@ -34,8 +34,9 @@ class StateSensor(Sensor):
             # background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
             # """
             css += """
-            width: 100px;
-            height: 100px;
+            width: 70px;
+            height: 70px;
+            animation: blink 3s linear infinite;
             background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
             clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
             """
