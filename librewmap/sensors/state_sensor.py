@@ -27,12 +27,6 @@ class StateSensor(Sensor):
         """
 
         if self.alarm == 'ok':
-            # css += """
-            # height: 80px;
-            # width: 80px;
-            # animation: blink 3s linear infinite;
-            # background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
-            # """
             css += """
             width: 70px;
             height: 70px;
@@ -63,8 +57,6 @@ class StateSensor(Sensor):
         }}
 
         .{self.name} p {{
-            top: 10px;
-            display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
