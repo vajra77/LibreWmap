@@ -21,7 +21,12 @@ class Map:
 
     def retrieve_data(self):
         for sensor in self.sensors:
-           sensor.update(self.api_url, self.api_key)
+            try:
+                sensor.update(self.api_url, self.api_key)
+            except Exception as e:
+                print(f"[ERR]: sensor {sensor.name} = {e}")
+                continue
+
 
     @classmethod
     def from_file(cls, path):
