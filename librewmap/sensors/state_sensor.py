@@ -56,8 +56,6 @@ class StateSensor(Sensor):
             """
 
         css += f"""
-        border-radius: 50%;
-        display: inline-block;
         }} 
 
         .{self.name}:hover {{
