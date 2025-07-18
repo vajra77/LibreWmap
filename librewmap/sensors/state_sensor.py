@@ -27,7 +27,7 @@ class StateSensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
-            padding: 3px;
+            background: #E5E5E5;
         """
 
         match self.alarm:
@@ -36,7 +36,6 @@ class StateSensor(Sensor):
                     width: 80px;
                     height: 80px;
                     animation: blink 3s linear infinite;
-                    background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
                 }
                 """
             case 'warn':
@@ -44,7 +43,6 @@ class StateSensor(Sensor):
                     width: 100px;
                     height: 100px;
                     animation: blink 1.5s linear infinite; 
-                    background: radial-gradient(rgb(211,84,0,1.0), rgb(255,255,255,0.2));
                 }
                 """
             case 'crit':
@@ -52,7 +50,6 @@ class StateSensor(Sensor):
                     width: 100px;
                     height: 100px;
                     animation: blink 0.5s linear infinite; 
-                    background: radial-gradient(rgb(176,58,46,1.0), rgb(255,255,255,0.2));
                 }
                 """
 
@@ -62,6 +59,7 @@ class StateSensor(Sensor):
         }}
 
         .{self.name} p {{
+            padding: 3px;
             display: flex;
             justify-content: center;
             align-items: center;
