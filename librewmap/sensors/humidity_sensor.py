@@ -45,7 +45,6 @@ class HumiditySensor(Sensor):
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            color: white;
         }}
         """
 
