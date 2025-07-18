@@ -28,8 +28,8 @@ class StateSensor(Sensor):
 
         if self.alarm == 'ok':
             css += """
-            width: 80px;
-            height: 80px;
+            width: 10px;
+            height: 10px;
             animation: blink 3s linear infinite;
             background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
             """
