@@ -77,13 +77,7 @@ class HumiditySensor(Sensor):
 
     @property
     def html(self) -> str:
-
-        if self.trend > 0:
-            return f"<p><img src='images/drop.svg' class='svg-filter'><img src='images/up.svg' class='svg-filter'>{self.last}&percnt;</p>"
-        elif self.trend < 0:
-            return f"<p><img src='images/drop.svg' class='svg-filter'><img src='images/down.svg' class='svg-filter'>{self.last}&percnt;</p>"
-        else:
-            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}&percnt;</p>"
+        return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}&percnt;</p>"
 
 
     def update(self, api_url, api_key):
