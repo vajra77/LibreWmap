@@ -12,11 +12,11 @@ class StateSensor(Sensor):
     def html(self) -> str:
         match self.alarm:
             case "ok":
-                return f"<p><img src='images/ok.svg' width='20px'>{self.name}</p>\n"
+                return f"<p><img class='svg-filter' src='images/ok.svg' width='20px'>{self.name}</p>\n"
             case "warn":
-                return f"<p><img src='images/bell_alarm.svg' width='30px'>{self.name}</p>\n"
+                return f"<p><img class='svg-filter' src='images/bell_alarm.svg' width='30px'>{self.name}</p>\n"
             case "crit":
-                return f"<p><img src='images/bell_alarm.svg' width='40px'>{self.name}</p>\n"
+                return f"<p><img class='svg-filter' src='images/bell_alarm.svg' width='40px'>{self.name}</p>\n"
         return ""
 
     @property
@@ -88,7 +88,7 @@ class StateSensor(Sensor):
                 """
 
         css += f""" 
-        .{self.name} img.svg {{
+        .{self.name} img.svg-filter {{
             padding-right: 5px;
         """
 
