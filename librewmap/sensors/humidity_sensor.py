@@ -48,6 +48,32 @@ class HumiditySensor(Sensor):
             color: white;
         }}
         """
+
+        css += f""" 
+        .{self.name} img.svg-filter {{
+            padding-right: 10px;
+        """
+
+        match self.alarm:
+            case "ok":
+                css += """
+                    width: 20px;
+                    filter: invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%);
+                }
+                """
+            case "warn":
+                css += """
+                    width: 30px;
+                    filter: invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%);
+                }
+                """
+            case "crit":
+                css += """
+                    width: 40px;
+                    filter: invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%);
+                }
+                """
+
         return css
 
     @property
