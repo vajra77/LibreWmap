@@ -9,6 +9,18 @@ class HumiditySensor(Sensor):
         return "humidity"
 
     @property
+    def width(self) -> int:
+        match self.alarm:
+            case 'ok':
+                return 30
+            case 'warn':
+                return 40
+            case 'crit':
+                return 60
+            case _:
+                return 20
+
+    @property
     def css(self) -> str:
         css = f"""
         .{self.name} {{
@@ -51,24 +63,22 @@ class HumiditySensor(Sensor):
         css += f""" 
         .{self.name} img.svg-filter {{
             padding: 2px;
+            width: {self.width}px;
         """
 
         match self.alarm:
             case "ok":
                 css += """
-                    width: 20px;
                     filter: invert(84%) sepia(51%) saturate(289%) hue-rotate(162deg) brightness(99%) contrast(94%);
                 }
                 """
             case "warn":
                 css += """
-                    width: 30px;
                     filter: invert(49%) sepia(25%) saturate(1226%) hue-rotate(160deg) brightness(87%) contrast(96%);
                 }
                 """
             case "crit":
                 css += """
-                    width: 40px;
                     filter: invert(44%) sepia(70%) saturate(6957%) hue-rotate(205deg) brightness(92%) contrast(104%);
                 }
                 """

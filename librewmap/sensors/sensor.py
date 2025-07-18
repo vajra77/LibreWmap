@@ -21,6 +21,10 @@ class Sensor:
         return ""
 
     @property
+    def width(self) -> int:
+        return 20
+
+    @property
     def css(self) -> str:
         return ""
 

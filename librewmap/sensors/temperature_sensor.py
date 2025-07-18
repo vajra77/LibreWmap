@@ -8,6 +8,17 @@ class TemperatureSensor(Sensor):
     def type(self) -> str:
         return "temperature"
 
+    @property
+    def width(self) -> int:
+        match self.alarm:
+            case 'ok':
+                return 30
+            case 'warn':
+                return 40
+            case 'crit':
+                return 60
+            case _:
+                return 20
 
     @property
     def css(self) -> str:
@@ -55,24 +66,22 @@ class TemperatureSensor(Sensor):
         css += f""" 
         .{self.name} img.svg-filter {{
             padding: 2px;
+            width: {self.width}px;
         """
 
         match self.alarm:
             case "ok":
                 css += """
-                    width: 20px;
                     filter: invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%);
                 }
                 """
             case "warn":
                 css += """
-                    width: 30px;
                     filter: invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%);
                 }
                 """
             case "crit":
                 css += """
-                    width: 40px;
                     filter: invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%);
                 }
                 """
