@@ -39,6 +39,10 @@ span:hover .overlay {
 	animation: none;
 }
 
+span:hover p {
+    display: none;
+}
+
 img.container {
 	position: absolute;
 	top: 0px;
@@ -73,10 +77,6 @@ img.container {
 
 .{{ sensor.name }}:hover {
     animation: none;
-}
-
-.{{ sensor.name }} p:hover {
-    display: none;
 }
 {% endfor -%}
 
