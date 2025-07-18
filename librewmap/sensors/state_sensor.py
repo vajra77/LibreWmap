@@ -11,7 +11,7 @@ class StateSensor(Sensor):
     @property
     def html(self) -> str:
         if self.alarm == 'warn' or self.alarm == 'crit':
-            result = f"<p><i class='fa-solid fa-bell'></i>{self.name}</p>\n"
+            result = f"<p><img src='images/bell_alarm.svg' width='30px'> {self.name}</p>\n"
         else:
             result = f"<p><img src='images/bell_ok.svg' width='20px'> {self.name}</p>\n"
 
@@ -31,21 +31,24 @@ class StateSensor(Sensor):
             width: 80px;
             height: 80px;
             animation: blink 3s linear infinite;
-            background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
+            color: green;
+            /* background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2)); */
             """
         elif self.alarm == 'warn':
             css += """
             height: 100px;
             width: 100px;
             animation: blink 1.5s linear infinite; 
-            background: radial-gradient(rgb(211,84,0,1.0), rgb(255,255,255,0.2));
+            color: orange;
+            /* background: radial-gradient(rgb(211,84,0,1.0), rgb(255,255,255,0.2)); */
             """
         else:
             css += """
             height: 100px;
             width: 100px;
             animation: blink 0.5s linear infinite; 
-            background: radial-gradient(rgb(176,58,46,1.0), rgb(255,255,255,0.2));
+            color: red;
+            /* background: radial-gradient(rgb(176,58,46,1.0), rgb(255,255,255,0.2)); */
             """
 
         css += f"""
