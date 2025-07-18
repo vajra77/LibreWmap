@@ -13,7 +13,7 @@ class StateSensor(Sensor):
         if self.alarm == 'warn' or self.alarm == 'crit':
             result = f"<p><i class='fa-solid fa-bell'></i>{self.name}</p>\n"
         else:
-            result = f"<p>{self.name}</p>\n"
+            result = f"<p><img src='images/bell_ok.svg'> {self.name}</p>\n"
 
         return result
 
@@ -28,7 +28,6 @@ class StateSensor(Sensor):
 
         if self.alarm == 'ok':
             css += """
-            background: url('images/bell_ok.svg');
             width: 80px;
             height: 80px;
             animation: blink 3s linear infinite;
