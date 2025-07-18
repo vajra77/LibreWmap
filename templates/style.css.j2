@@ -48,26 +48,8 @@ img.container {
 	opacity: 0.6;
 }
 
-img.svg-ok {
-    padding-right: 5px;
-    fill: green;
-    width: 20px;
-}
-
-img.svg-warn {
-    padding-right: 5px;
-    fill: orange;
-    width: 30px;
-}
-
-img.svg-crit {
-    padding-right: 5px;
-    fill: red;
-    width: 40px;
-}
-
 {% for sensor in map.sensors -%}
-    {{ sensor.css }}
+{{ sensor.css }}
 {% endfor -%}
 
 @keyframes blink {
