@@ -62,7 +62,7 @@ class StateSensor(Sensor):
 
         css += f""" 
         .{self.name} img.svg-filter {{
-            padding-right: 10px;
+            padding: 10px;
         """
 
         match self.alarm:

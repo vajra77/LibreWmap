@@ -15,7 +15,6 @@ class HumiditySensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
-            display: inline-block;
         """
 
         match self.alarm:
@@ -41,6 +40,7 @@ class HumiditySensor(Sensor):
         }}
 
         .{self.name} p {{
+            padding: 3px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -50,7 +50,7 @@ class HumiditySensor(Sensor):
 
         css += f""" 
         .{self.name} img.svg-filter {{
-            padding-right: 10px;
+            padding: 10px;
         """
 
         match self.alarm:
@@ -79,11 +79,11 @@ class HumiditySensor(Sensor):
     def html(self) -> str:
 
         if self.trend > 0:
-            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}<img src='images/up.svg' class='svg-filter'></p>"
+            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}&percnt;<img src='images/up.svg' class='svg-filter'></p>"
         elif self.trend < 0:
-            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}<img src='images/down.svg' class='svg-filter'></p>"
+            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}&percnt;<img src='images/down.svg' class='svg-filter'></p>"
         else:
-            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}</p>"
+            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}&percnt;</p>"
 
 
     def update(self, api_url, api_key):
