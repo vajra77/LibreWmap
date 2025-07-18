@@ -80,9 +80,9 @@ class HumiditySensor(Sensor):
     def html(self) -> str:
 
         if self.trend > 0:
-            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}<img src='images/up.svg'></p>"
+            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}<img src='images/up.svg' class='svg-filter'></p>"
         elif self.trend < 0:
-            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}<img src='images/down.svg'></p>"
+            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}<img src='images/down.svg' class='svg-filter'></p>"
         else:
             return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}</p>"
 
