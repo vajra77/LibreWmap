@@ -96,7 +96,7 @@ class StateSensor(Sensor):
             case "ok":
                 css += """
                     width: 20px;
-                    fill: green;
+                    filter: invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%);
                 }
                 """
             case "warn":
