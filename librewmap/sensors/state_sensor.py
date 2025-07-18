@@ -88,7 +88,7 @@ class StateSensor(Sensor):
                 """
 
         css += f""" 
-        .{self.name} img.svg-filter {{
+        .{self.name} img .svg-filter {{
             padding-right: 5px;
         """
 
