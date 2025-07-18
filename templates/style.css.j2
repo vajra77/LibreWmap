@@ -70,6 +70,10 @@ img.container {
     width: {{ sensor.width }}px;
     filter: {{ sensor.color_filter }};
 }
+
+.{{ sensor.name }}:hover {
+    animation: none;
+}
 {% endfor -%}
 
 @keyframes blink {
