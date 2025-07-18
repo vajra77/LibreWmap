@@ -48,6 +48,7 @@ class TemperatureSensor(Sensor):
             justify-content: center;
             align-items: center;
             font-weight: bold;
+            background-color: #f7f7f7;
         }}
         """
 
