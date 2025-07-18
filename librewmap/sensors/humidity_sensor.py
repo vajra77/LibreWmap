@@ -40,7 +40,7 @@ class HumiditySensor(Sensor):
         }}
 
         .{self.name} p {{
-            padding: 3px;
+            padding: 2px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -50,7 +50,7 @@ class HumiditySensor(Sensor):
 
         css += f""" 
         .{self.name} img.svg-filter {{
-            padding: 10px;
+            padding: 2px;
         """
 
         match self.alarm:
