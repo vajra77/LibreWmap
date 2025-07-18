@@ -12,7 +12,7 @@ class StateSensor(Sensor):
     def html(self) -> str:
         match self.alarm:
             case "ok":
-                return f"<p><img class='svg-filter' src='images/ok.svg' width='20px'>{self.name}</p>\n"
+                return f"<p><img class='svg-filter' src='images/ok.svg'>{self.name}</p>\n"
             case "warn":
                 return f"<p><img class='svg-filter' src='images/bell_alarm.svg' width='30px'>{self.name}</p>\n"
             case "crit":
@@ -83,13 +83,13 @@ class StateSensor(Sensor):
             case "warn":
                 css += """
                     width: 30px;
-                    fill: orange;
+                    filter: invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%);
                 }
                 """
             case "crit":
                 css += """
                     width: 40px;
-                    fill: red;
+                    filter: invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%);
                 }
                 """
 
