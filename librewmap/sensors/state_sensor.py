@@ -12,11 +12,11 @@ class StateSensor(Sensor):
     def html(self) -> str:
         match self.alarm:
             case "ok":
-                return f"<p><img src='images/ok.svg'>{self.name}</p>\n"
+                return f"<p><img src='images/ok.svg' width='20px'>{self.name}</p>\n"
             case "warn":
-                return f"<p><img src='images/bell_alarm.svg'>{self.name}</p>\n"
+                return f"<p><img src='images/bell_alarm.svg' width='30px'>{self.name}</p>\n"
             case "crit":
-                return f"<p><img src='images/bell_alarm.svg'>{self.name}</p>\n"
+                return f"<p><img src='images/bell_alarm.svg' width='40px'>{self.name}</p>\n"
         return ""
 
     @property
