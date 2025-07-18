@@ -2,11 +2,11 @@ from .sensor import Sensor
 import requests
 
 
-class StateSensor(Sensor):
+class CurrentSensor(Sensor):
 
     @property
     def type(self) -> str:
-        return "state"
+        return "current"
 
     @property
     def html(self) -> str:
@@ -28,7 +28,6 @@ class StateSensor(Sensor):
 
         if self.alarm == 'ok':
             css += """
-            background: url('images/bell_ok.svg');
             width: 80px;
             height: 80px;
             animation: blink 3s linear infinite;
