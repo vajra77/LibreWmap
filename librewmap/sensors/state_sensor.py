@@ -10,41 +10,19 @@ class StateSensor(Sensor):
 
     @property
     def html(self) -> str:
-        if self.alarm == 'warn' or self.alarm == 'crit':
-            result = f"<p><img class='svg-filter' src='images/bell_alarm.svg'> {self.name}</p>\n"
-        else:
-            result = f"<p><img class='svg-filter' src='images/ok.svg'> {self.name}</p>\n"
-
-        return result
+        match self.alarm:
+            case "ok":
+                return f"<p><img class='svg-ok' src='images/ok.svg'>{self.name}</p>\n"
+            case "warn":
+                return f"<p><img class='svg-warn' src='images/bell_alarm.svg'>{self.name}</p>\n"
+            case "crit":
+                return f"<p><img class='svg-crit' src='images/bell_alarm.svg'>{self.name}</p>\n"
+        return ""
 
     @property
     def css(self) -> str:
 
-        if self.alarm == 'ok':
-            css = """
-            .svg-filter {
-                fill: green;
-                width: 20px;
-            }
-            """
-        elif self.alarm == 'warn':
-            css = """
-                .svg-filter {
-                    fill: orange;
-                    width: 30px;
-                }
-                """
-        elif self.alarm == 'crit':
-            css = """
-                .svg-filter {
-                    fill: red;
-                    width: 40px;
-                }
-                """
-        else:
-            css = ""
-
-        css += f"""
+        css = f"""
         .{self.name} {{
             position: absolute;
             top: {self.top}px;
