@@ -15,7 +15,6 @@ class HumiditySensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
-            background-color: #E5E5E5;
         """
 
         match self.alarm:

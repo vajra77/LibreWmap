@@ -16,61 +16,62 @@ class TemperatureSensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
+            display: inline-block;
         """
 
         if self.alarm == 'ok':
             css += """
-            height: 80px;
-            width: 80px;
             animation: blink 3s linear infinite; 
-            background: radial-gradient(rgb(68,206,27,1.0), rgb(255,255,255,0.2));
+            /* background: radial-gradient(rgb(68,206,27,1.0), rgb(255,255,255,0.2)); */
             """
         elif self.alarm == 'warn':
             css += """
-            height: 100px;
-            width: 100px;
             animation: blink 1.5s linear infinite; 
-            background: radial-gradient(rgb(242,161,52,1.0), rgb(255,255,255,0.2));
+            /* background: radial-gradient(rgb(242,161,52,1.0), rgb(255,255,255,0.2)); */
             """
         else:
             css += """
-            height: 120px;
-            width: 120px;
             animation: blink 0.5s linear infinite; 
-            background: radial-gradient(rgb(229,31,31,1.0), rgb(255,255,255,0.2));
+            /* background: radial-gradient(rgb(229,31,31,1.0), rgb(255,255,255,0.2)); */
             """
 
-        css += f"""
-        border-radius: 50%;
-        display: inline-block;
-        }} 
-        
+        css += f""""
         .{self.name}:hover {{
             animation: none;
         }}
-
+        
         .{self.name} p {{
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            color: white;
+        }}
         """
 
-        if self.alarm == 'ok':
-            css += """
-            height: 40px;
-            """
-        elif self.alarm == 'warn':
-            css += """
-            height: 60px
-            """
-        else:
-            css += """
-            height: 80px
-            """
+        css += f""" 
+        .{self.name} img.svg-filter {{
+            padding: 2px;
+        """
 
-        css += "}"
+        match self.alarm:
+            case "ok":
+                css += """
+                    width: 20px;
+                    filter: invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%);
+                }
+                """
+            case "warn":
+                css += """
+                    width: 30px;
+                    filter: invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%);
+                }
+                """
+            case "crit":
+                css += """
+                    width: 40px;
+                    filter: invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%);
+                }
+                """
 
         return css
 
@@ -79,13 +80,11 @@ class TemperatureSensor(Sensor):
     def html(self) -> str:
 
         if self.trend > 0:
-            result = f"<p><i class='fa-solid fa-temperature-arrow-up'></i><i class='fa-solid fa-arrow-up'></i>&nbsp;{self.last}</p>\n"
+            return f"<p><img src='images/temp_up.svg' class='svg-filter'>{self.last}ºC</p>\n"
         elif self.trend < 0:
-            result = f"<p><i class='fa-solid fa-temperature-arrow-down'></i><i class='fa-solid fa-arrow-down'></i>&nbsp;{self.last}</p>\n"
+            return f"<p><img src='images/temp_down.svg' class='svg-filter'>{self.last}ºC</p>\n"
         else:
-            result = f"<p><i class='fa-solid fa-temperature-half'></i>&nbsp;&nbsp;{self.last}</p>\n"
-
-        return result
+            return f"<p><img src='images/tempn.svg' class='svg-filter'>{self.last}ºC</p>\n"
 
 
     def update(self, api_url, api_key):
