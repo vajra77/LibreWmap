@@ -27,7 +27,6 @@ class StateSensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
-            background-color: #e5e5e5;
             padding: 3px;
         """
 
@@ -37,7 +36,7 @@ class StateSensor(Sensor):
                     width: 80px;
                     height: 80px;
                     animation: blink 3s linear infinite;
-                    /* background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2)); */
+                    background: radial-gradient(rgb(52,73,94,1.0), rgb(255,255,255,0.2));
                 }
                 """
             case 'warn':
@@ -45,7 +44,7 @@ class StateSensor(Sensor):
                     width: 100px;
                     height: 100px;
                     animation: blink 1.5s linear infinite; 
-                    /* background: radial-gradient(rgb(211,84,0,1.0), rgb(255,255,255,0.2)); */
+                    background: radial-gradient(rgb(211,84,0,1.0), rgb(255,255,255,0.2));
                 }
                 """
             case 'crit':
@@ -53,7 +52,7 @@ class StateSensor(Sensor):
                     width: 100px;
                     height: 100px;
                     animation: blink 0.5s linear infinite; 
-                    /* background: radial-gradient(rgb(176,58,46,1.0), rgb(255,255,255,0.2)); */
+                    background: radial-gradient(rgb(176,58,46,1.0), rgb(255,255,255,0.2));
                 }
                 """
 
