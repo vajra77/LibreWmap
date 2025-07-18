@@ -80,11 +80,11 @@ class TemperatureSensor(Sensor):
     def html(self) -> str:
 
         if self.trend > 0:
-            return f"<p><img src='images/temp_up.svg' class='svg-filter'>{self.last}ºC</p>\n"
+            return f"<p><img class='svg-filter' src='images/temp_up.svg'>{self.last}ºC</p>\n"
         elif self.trend < 0:
-            return f"<p><img src='images/temp_down.svg' class='svg-filter'>{self.last}ºC</p>\n"
+            return f"<p><img class='svg-filter' src='images/temp_down.svg'>{self.last}ºC</p>\n"
         else:
-            return f"<p><img src='images/temp.svg' class='svg-filter'>{self.last}ºC</p>\n"
+            return f"<p><img class='svg-filter' src='images/temp.svg'>{self.last}ºC</p>\n"
 
 
     def update(self, api_url, api_key):
