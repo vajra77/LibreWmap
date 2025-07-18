@@ -19,7 +19,32 @@ class StateSensor(Sensor):
 
     @property
     def css(self) -> str:
-        css = f"""
+
+        if self.alarm == 'ok':
+            css = """
+            .svg-filter {
+                fill: green;
+                width: 20px;
+            }
+            """
+        elif self.alarm == 'warn':
+            css = """
+                .svg-filter {
+                    fill: orange;
+                    width: 30px;
+                }
+                """
+        elif self.alarm == 'crit':
+            css = """
+                .svg-filter {
+                    fill: red;
+                    width: 40px;
+                }
+                """
+        else:
+            css = ""
+
+        css += f"""
         .{self.name} {{
             position: absolute;
             top: {self.top}px;
@@ -46,26 +71,6 @@ class StateSensor(Sensor):
             width: 100px;
             animation: blink 0.5s linear infinite; 
             /* background: radial-gradient(rgb(176,58,46,1.0), rgb(255,255,255,0.2)); */
-            """
-
-        css += f"""
-        }}
-        
-        .{self.name} img {{
-            padding-right: 5px;
-        """
-
-        if self.alarm == 'ok':
-            css += """
-            fill: green;
-            """
-        elif self.alarm == 'warn':
-            css += """
-            fill: orange;
-            """
-        else:
-            css += """
-            fill: red;
             """
 
         css += f"""
