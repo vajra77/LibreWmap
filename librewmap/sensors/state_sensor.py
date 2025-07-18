@@ -56,6 +56,7 @@ class StateSensor(Sensor):
             justify-content: center;
             align-items: center;
             font-weight: bold;
+            background-color: #efefef;
         }}
         """
 
