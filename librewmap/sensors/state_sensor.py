@@ -27,7 +27,8 @@ class StateSensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
-            background-color: gray;
+            background-color: #e5e5e5y;
+            padding: 3px;
         """
 
         match self.alarm:
