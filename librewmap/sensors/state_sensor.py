@@ -14,9 +14,9 @@ class StateSensor(Sensor):
             case "ok":
                 return f"<p><img class='svg-filter' src='images/ok.svg'>{self.name}</p>\n"
             case "warn":
-                return f"<p><img class='svg-filter' src='images/bell_alarm.svg' width='30px'>{self.name}</p>\n"
+                return f"<p><img class='svg-filter' src='images/bell_alarm.svg'>{self.name}</p>\n"
             case "crit":
-                return f"<p><img class='svg-filter' src='images/bell_alarm.svg' width='40px'>{self.name}</p>\n"
+                return f"<p><img class='svg-filter' src='images/bell_alarm.svg'>{self.name}</p>\n"
         return ""
 
     @property
@@ -27,6 +27,7 @@ class StateSensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
+            background-color: gray;
         """
 
         match self.alarm:
