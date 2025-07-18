@@ -52,7 +52,6 @@ class StateSensor(Sensor):
         }}
 
         .{self.name} p {{
-            padding: 2px;
             display: flex;
             justify-content: center;
             align-items: center;
