@@ -56,19 +56,19 @@ class HumiditySensor(Sensor):
             case "ok":
                 css += """
                     width: 20px;
-                    filter: invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%);
+                    filter: invert(84%) sepia(51%) saturate(289%) hue-rotate(162deg) brightness(99%) contrast(94%);
                 }
                 """
             case "warn":
                 css += """
                     width: 30px;
-                    filter: invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%);
+                    filter: invert(49%) sepia(25%) saturate(1226%) hue-rotate(160deg) brightness(87%) contrast(96%);
                 }
                 """
             case "crit":
                 css += """
                     width: 40px;
-                    filter: invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%);
+                    filter: invert(44%) sepia(70%) saturate(6957%) hue-rotate(205deg) brightness(92%) contrast(104%);
                 }
                 """
 
