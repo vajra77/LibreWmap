@@ -15,35 +15,27 @@ class HumiditySensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
+            display: inline-block;
         """
 
-        if self.alarm == 'ok':
-            css += """
-            height: 80px;
-            width: 80px;
-            animation: blink 3s linear infinite; 
-            background: radial-gradient(rgb(205,221,255,1.0), rgb(255,255,255,0.2));
-            """
-        elif self.alarm == 'warn':
-            css += """
-            height: 100px;
-            width: 100px;
-            animation: blink 1.5s linear infinite; 
-            background: radial-gradient(rgb(36,57,165,1.0), rgb(255,255,255,0.2));
-            """
-        else:
-            css += """
-            height: 120px;
-            width: 120px;
-            animation: blink 0.5s linear infinite; 
-            background: radial-gradient(rgb(74,141,255,1.0), rgb(255,255,255,0.2));
-            """
+        match self.alarm:
+            case "ok":
+                css += """
+                    animation: blink 3s linear infinite; 
+                }
+                """
+            case "warn":
+                css += """
+                    animation: blink 1.5s linear infinite; 
+                }
+                """
+            case "crit":
+                css += """
+                    animation: blink 0.5s linear infinite; 
+                }
+                """
 
         css += f"""
-        border-radius: 50%;
-        display: inline-block;
-        }} 
-
         .{self.name}:hover {{
             animation: none;
         }}
@@ -54,36 +46,19 @@ class HumiditySensor(Sensor):
             align-items: center;
             font-weight: bold;
             color: white;
+        }}
         """
-
-        if self.alarm == 'ok':
-            css += """
-            height: 40px;
-            """
-        elif self.alarm == 'warn':
-            css += """
-            height: 60px
-            """
-        else:
-            css += """
-            height: 80px
-            """
-
-        css += "}"
-
         return css
 
     @property
     def html(self) -> str:
 
         if self.trend > 0:
-            result = f"<p><i class='fa-solid fa-droplet'></i><i class='fa-solid fa-arrow-up'></i>&nbsp;{self.last}</p>"
+            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}<img src='images/up.svg'></p>"
         elif self.trend < 0:
-            result = f"<p><i class='fa-solid fa-droplet'></i><i class='fa-solid fa-arrow-down'></i>&nbsp;{self.last}</p>"
+            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}<img src='images/down.svg'></p>"
         else:
-            result = f"<p><i class='fa-solid fa-droplet'></i>&nbsp;&nbsp;{self.last}</p>"
-
-        return result
+            return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}</p>"
 
 
     def update(self, api_url, api_key):
