@@ -65,27 +65,8 @@ class StateSensor(Sensor):
             justify-content: center;
             align-items: center;
             font-weight: bold;
+        }}
         """
-
-        match self.alarm:
-            case "ok":
-                css += """
-                    height: 40px;
-                    color: green;
-                }
-                """
-            case "warn":
-                css += """
-                    height: 60px
-                    color: orange;
-                }
-                """
-            case "crit":
-                css += """
-                    height: 80px
-                    color: red;
-                }
-                """
 
         css += f""" 
         .{self.name} img.svg-filter {{
