@@ -21,18 +21,21 @@ class TemperatureSensor(Sensor):
 
         if self.alarm == 'ok':
             css += """
-            animation: blink 3s linear infinite; 
-            /* background: radial-gradient(rgb(68,206,27,1.0), rgb(255,255,255,0.2)); */
+                animation: blink 3s linear infinite; 
+                /* background: radial-gradient(rgb(68,206,27,1.0), rgb(255,255,255,0.2)); */
+            }
             """
         elif self.alarm == 'warn':
             css += """
-            animation: blink 1.5s linear infinite; 
-            /* background: radial-gradient(rgb(242,161,52,1.0), rgb(255,255,255,0.2)); */
+                animation: blink 1.5s linear infinite; 
+                /* background: radial-gradient(rgb(242,161,52,1.0), rgb(255,255,255,0.2)); */
+            }
             """
         else:
             css += """
-            animation: blink 0.5s linear infinite; 
-            /* background: radial-gradient(rgb(229,31,31,1.0), rgb(255,255,255,0.2)); */
+                animation: blink 0.5s linear infinite; 
+                /* background: radial-gradient(rgb(229,31,31,1.0), rgb(255,255,255,0.2)); */
+            }
             """
 
         css += f""""
