@@ -19,7 +19,7 @@
 
 	{% for sensor in map.sensors -%}
 	<span class="{{ sensor.name }}">
-	    <img class="svg-filter" src="{{ sensor.image }}">{{ sensor.value }}
+	    <div><img class="svg-filter" src="{{ sensor.image }}">{{ sensor.value }}</div>
         <img class="overlay" src="{{ map.nms_url }}/graph.php?id={{ sensor.id }}&type=sensor_{{ sensor.type }}&height=287&width=616">
 	</span>
 	{% endfor -%}
