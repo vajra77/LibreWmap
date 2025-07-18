@@ -63,20 +63,22 @@ class StateSensor(Sensor):
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            color: white;
         """
 
         if self.alarm == 'ok':
             css += """
             height: 40px;
+            color: green;
             """
         elif self.alarm == 'warn':
             css += """
             height: 60px
+            color: orange;
             """
         else:
             css += """
             height: 80px
+            color: red;
             """
 
         css += "}"
