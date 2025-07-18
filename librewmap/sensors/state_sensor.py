@@ -11,9 +11,9 @@ class StateSensor(Sensor):
     @property
     def html(self) -> str:
         if self.alarm == 'warn' or self.alarm == 'crit':
-            result = f"<p><img src='images/bell_alarm.svg' width='30px'> {self.name}</p>\n"
+            result = f"<p><img class='svg-filter' src='images/bell_alarm.svg'> {self.name}</p>\n"
         else:
-            result = f"<p><img src='images/ok.svg' width='20px'> {self.name}</p>\n"
+            result = f"<p><img class='svg-filter' src='images/ok.svg'> {self.name}</p>\n"
 
         return result
 
