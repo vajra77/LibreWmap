@@ -84,7 +84,7 @@ class TemperatureSensor(Sensor):
         elif self.trend < 0:
             return f"<p><img src='images/temp_down.svg' class='svg-filter'>{self.last}ºC</p>\n"
         else:
-            return f"<p><img src='images/tempn.svg' class='svg-filter'>{self.last}ºC</p>\n"
+            return f"<p><img src='images/temp.svg' class='svg-filter'>{self.last}ºC</p>\n"
 
 
     def update(self, api_url, api_key):
