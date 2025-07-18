@@ -9,86 +9,22 @@ class HumiditySensor(Sensor):
         return "humidity"
 
     @property
-    def width(self) -> int:
-        match self.alarm:
-            case 'ok':
-                return 30
-            case 'warn':
-                return 40
-            case 'crit':
-                return 60
-            case _:
-                return 20
-
-    @property
-    def css(self) -> str:
-        css = f"""
-        .{self.name} {{
-            position: absolute;
-            top: {self.top}px;
-            left: {self.left}px;
-        """
-
+    def color_filter(self):
         match self.alarm:
             case "ok":
-                css += """
-                    animation: blink 3s linear infinite; 
-                }
-                """
+                return "invert(84%) sepia(51%) saturate(289%) hue-rotate(162deg) brightness(99%) contrast(94%)"
             case "warn":
-                css += """
-                    animation: blink 1.5s linear infinite; 
-                }
-                """
+                return "invert(49%) sepia(25%) saturate(1226%) hue-rotate(160deg) brightness(87%) contrast(96%"
             case "crit":
-                css += """
-                    animation: blink 0.5s linear infinite; 
-                }
-                """
-
-        css += f"""
-        .{self.name}:hover {{
-            animation: none;
-        }}
-
-        .{self.name} p {{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            background-color: #efefef;
-        }}
-        """
-
-        css += f""" 
-        .{self.name} img.svg-filter {{
-            padding: 2px;
-            width: {self.width}px;
-        """
-
-        match self.alarm:
-            case "ok":
-                css += """
-                    filter: invert(84%) sepia(51%) saturate(289%) hue-rotate(162deg) brightness(99%) contrast(94%);
-                }
-                """
-            case "warn":
-                css += """
-                    filter: invert(49%) sepia(25%) saturate(1226%) hue-rotate(160deg) brightness(87%) contrast(96%);
-                }
-                """
-            case "crit":
-                css += """
-                    filter: invert(44%) sepia(70%) saturate(6957%) hue-rotate(205deg) brightness(92%) contrast(104%);
-                }
-                """
-
-        return css
+                return "invert(44%) sepia(70%) saturate(6957%) hue-rotate(205deg) brightness(92%) contrast(104%)"
 
     @property
-    def html(self) -> str:
-        return f"<p><img src='images/drop.svg' class='svg-filter'>{self.last}&percnt;</p>"
+    def image(self) -> str:
+        return "images/drop.svg"
 
+    @property
+    def value(self) -> str:
+        return f"{self.last}&percnt;"
 
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/humidity/{self.id}"

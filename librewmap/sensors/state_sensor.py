@@ -9,93 +9,32 @@ class StateSensor(Sensor):
         return "state"
 
     @property
-    def width(self) -> int:
+    def image(self) -> str:
         match self.alarm:
-            case 'ok':
-                return 30
-            case 'warn':
-                return 40
-            case 'crit':
-                return 60
+            case "ok":
+                return "images/check.svg"
+            case "warn":
+                return "images/bell.svg"
+            case "crit":
+                return "images/bell.svg"
             case _:
-                return 20
+                return ""
 
     @property
-    def html(self) -> str:
+    def color_filter(self) -> str:
         match self.alarm:
             case "ok":
-                return f"<p><img class='svg-filter' src='images/check.svg'>{self.name}</p>\n"
+                return "invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%)"
             case "warn":
-                return f"<p><img class='svg-filter' src='images/bell.svg'>{self.name}</p>\n"
+                return "invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%)"
             case "crit":
-                return f"<p><img class='svg-filter' src='images/bell.svg'>{self.name}</p>\n"
-        return ""
+                return "invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%)"
+            case _:
+                return ""
 
     @property
-    def css(self) -> str:
-
-        css = f"""
-        .{self.name} {{
-            position: absolute;
-            top: {self.top}px;
-            left: {self.left}px;
-        """
-
-        match self.alarm:
-            case "ok":
-                css += """
-                    animation: blink 3s linear infinite;
-                }
-                """
-            case 'warn':
-                css += """
-                    animation: blink 1.5s linear infinite; 
-                }
-                """
-            case 'crit':
-                css += """
-                    animation: blink 0.5s linear infinite; 
-                }
-                """
-
-        css += f"""
-        .{self.name}:hover {{
-            animation: none;
-        }}
-
-        .{self.name} p {{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            background-color: #efefef;
-        }}
-        """
-
-        css += f""" 
-        .{self.name} img.svg-filter {{
-            padding: 2px;
-            width: {self.width}px;
-        """
-
-        match self.alarm:
-            case "ok":
-                css += """
-                    filter: invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%);
-                }
-                """
-            case "warn":
-                css += """
-                    filter: invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%);
-                }
-                """
-            case "crit":
-                css += """
-                    filter: invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%);
-                }
-                """
-
-        return css
+    def value(self) -> str:
+        return self.name
 
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/state/{self.id}"

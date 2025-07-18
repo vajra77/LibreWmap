@@ -9,96 +9,27 @@ class TemperatureSensor(Sensor):
         return "temperature"
 
     @property
-    def width(self) -> int:
-        match self.alarm:
-            case 'ok':
-                return 30
-            case 'warn':
-                return 40
-            case 'crit':
-                return 60
-            case _:
-                return 20
-
-    @property
-    def css(self) -> str:
-        css = f"""
-        .{self.name} {{
-            position: absolute;
-            top: {self.top}px;
-            left: {self.left}px;
-            display: inline-block;
-        """
-
-        if self.alarm == 'ok':
-            css += """
-                animation: blink 3s linear infinite; 
-                /* background: radial-gradient(rgb(68,206,27,1.0), rgb(255,255,255,0.2)); */
-            }
-            """
-        elif self.alarm == 'warn':
-            css += """
-                animation: blink 1.5s linear infinite; 
-                /* background: radial-gradient(rgb(242,161,52,1.0), rgb(255,255,255,0.2)); */
-            }
-            """
-        else:
-            css += """
-                animation: blink 0.5s linear infinite; 
-                /* background: radial-gradient(rgb(229,31,31,1.0), rgb(255,255,255,0.2)); */
-            }
-            """
-
-        css += f""""
-        .{self.name}:hover {{
-            animation: none;
-        }}
-        
-        .{self.name} p {{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            background-color: #efefef;
-        }}
-        """
-
-        css += f""" 
-        .{self.name} img.svg-filter {{
-            padding: 2px;
-            width: {self.width}px;
-        """
-
+    def color_filter(self):
         match self.alarm:
             case "ok":
-                css += """
-                    filter: invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%);
-                }
-                """
+                return "invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%)"
             case "warn":
-                css += """
-                    filter: invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%);
-                }
-                """
+                return "invert(65%) sepia(82%) saturate(519%) hue-rotate(0deg) brightness(103%) contrast(104%)"
             case "crit":
-                css += """
-                    filter: invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%);
-                }
-                """
-
-        return css
-
+                return "invert(18%) sepia(97%) saturate(6531%) hue-rotate(358deg) brightness(103%) contrast(112%)"
 
     @property
-    def html(self) -> str:
-
+    def image(self) -> str:
         if self.trend > 0:
-            return f"<p><img class='svg-filter' src='images/temp_up.svg'>{self.last}ºC</p>\n"
+            return "images/temp_up.svg"
         elif self.trend < 0:
-            return f"<p><img class='svg-filter' src='images/temp_down.svg'>{self.last}ºC</p>\n"
+            return "images/temp_down.svg"
         else:
-            return f"<p><img class='svg-filter' src='images/temp.svg'>{self.last}ºC</p>\n"
+            return "images/temp.svg"
 
+    @property
+    def value(self) -> str:
+        return f"{self.last}ºC"
 
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/temperature/{self.id}"

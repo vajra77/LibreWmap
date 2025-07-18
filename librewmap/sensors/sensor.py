@@ -22,11 +22,39 @@ class Sensor:
 
     @property
     def width(self) -> int:
-        return 20
+        match self.alarm:
+            case 'ok':
+                return 30
+            case 'warn':
+                return 40
+            case 'crit':
+                return 60
+            case _:
+                return 20
 
     @property
-    def css(self) -> str:
+    def blink(self) -> float:
+        match self.alarm:
+            case "ok":
+                return 3
+            case "warn":
+                return 1.5
+            case "crit":
+                return 0.5
+            case _:
+                return 0.5
+
+    @property
+    def color_filter(self) -> str:
         return ""
+
+    @property
+    def image(self) -> str:
+        return "images/ok.svg"
+
+    @property
+    def value(self) -> str:
+        return "n/a"
 
     def update(self, api_url, api_key):
         raise NotImplementedError()

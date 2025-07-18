@@ -49,7 +49,35 @@ img.container {
 }
 
 {% for sensor in map.sensors -%}
-{{ sensor.css }}
+.{{ sensor.name }} {
+    position: absolute;
+    top: {{ sensor.top }}px;
+    left: {{ sensor.left }}px;
+    display: inline-block;
+    animation: blink {{ sensor.blink }}s linear infinite;
+}
+
+.{{ sensor.name }} p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: #efefef;
+}
+
+.{{ sensor.name }} img.svg-filter {
+    padding: 2px;
+    width: {{ sensor.width }}px;
+    filter: {{ sensor.color_filter }};
+}
+
+.{{ sensor.name }}:hover {
+    animation: none;
+}
+
+.{{ sensor.name }} p:hover {
+    animation: none;
+}
 {% endfor -%}
 
 @keyframes blink {
