@@ -27,7 +27,7 @@ class StateSensor(Sensor):
             position: absolute;
             top: {self.top}px;
             left: {self.left}px;
-            background-color: #e5e5e5y;
+            background-color: #e5e5e5;
             padding: 3px;
         """
 
