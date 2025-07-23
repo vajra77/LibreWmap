@@ -6,7 +6,7 @@ class Sensor:
     id: int
     device_id: int
     name: str
-    label: str = field(init=True, repr=False,default="n/a")
+    label: str
     top: int
     left: int
     trend: int
@@ -16,6 +16,10 @@ class Sensor:
     @property
     def type(self):
         return "generic"
+
+    @property
+    def label(self):
+        return self.label
 
     @property
     def html(self) -> str:
