@@ -18,10 +18,6 @@ class Sensor:
         return "generic"
 
     @property
-    def label(self):
-        return self.label
-
-    @property
     def html(self) -> str:
         return ""
 
