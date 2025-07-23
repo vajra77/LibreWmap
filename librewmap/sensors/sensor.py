@@ -6,6 +6,7 @@ class Sensor:
     id: int
     device_id: int
     name: str
+    label: str
     top: int
     left: int
     trend: int
@@ -52,10 +53,6 @@ class Sensor:
     def image(self) -> str:
         return "images/ok.svg"
 
-    @property
-    def value(self) -> str:
-        return "n/a"
-
     def update(self, api_url, api_key):
         raise NotImplementedError()
 
@@ -65,6 +62,7 @@ class Sensor:
             id=data["id"],
             device_id=data["device_id"],
             name=data["name"],
+            label=data["label"],
             top=data["top"],
             left=data["left"],
             trend=0,
