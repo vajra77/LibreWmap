@@ -59,15 +59,7 @@ class Sensor:
 
     @property
     def width(self) -> int:
-        match self._alarm:
-            case 'ok':
-                return 30
-            case 'warn':
-                return 40
-            case 'crit':
-                return 60
-            case _:
-                return 20
+        return 30
 
     @property
     def blink(self) -> float:
