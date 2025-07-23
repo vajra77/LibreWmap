@@ -1,6 +1,5 @@
 
 
-@dataclass
 class Sensor:
 
     def __init__(self, id, device_id, name, label, top, left, trend, last, alarm):
