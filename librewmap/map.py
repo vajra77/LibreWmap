@@ -33,8 +33,10 @@ class Map:
     def alarm(self):
         result = False
         for sensor in self.sensors:
-            result = result or sensor.alarm != 'ok'
-        return True
+            if sensor.alarm != "ok":
+                result = True
+                break
+        return result
 
     @classmethod
     def from_file(cls, path):
