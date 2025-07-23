@@ -7,7 +7,7 @@ let slideInterval;
 let playing = false;
 
 function nextSlide() {
-  const pages = ["rom1a.html", "rom1b.html", "rom1c.html", "pwrs.html"];
+  const pages = ["rom1a.html", "rom1b.html", "rom1c.html"];
   currentSlide = (currentSlide + 1) % pages.length;
   slideFrame.src = pages[currentSlide];
 }
