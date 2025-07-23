@@ -65,7 +65,7 @@ class Sensor:
     def blink(self) -> float:
         match self._alarm:
             case "ok":
-                return 10
+                return 3
             case "warn":
                 return 1.5
             case "crit":
