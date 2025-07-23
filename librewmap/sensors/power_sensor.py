@@ -24,7 +24,8 @@ class PowerSensor(Sensor):
 
     @property
     def label(self) -> str:
-        return f"{self._last}kW"
+        value = self._last / 1000.0
+        return f"{value:02}kW"
 
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/load/{self.id}"
