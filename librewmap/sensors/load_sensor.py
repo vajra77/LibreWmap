@@ -20,7 +20,7 @@ class LoadSensor(Sensor):
 
     @property
     def image(self) -> str:
-        return "images/pwbank.svg"
+        return "images/gauge.svg"
 
     @property
     def label(self) -> str:
