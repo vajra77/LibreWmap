@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import List
 from librewmap.sensors import (Sensor, TemperatureSensor,
                                HumiditySensor, StateSensor, InvertedStateSensor,
-                               LoadSensor)
+                               LoadSensor, PowerSensor)
 
 
 @dataclass
@@ -59,6 +59,8 @@ class Map:
                     sensor = InvertedStateSensor.from_json(sconf)
                 case 'load':
                     sensor = LoadSensor.from_json(sconf)
+                case 'power':
+                    sensor = PowerSensor.from_json(sconf)
                 case _:
                     raise ValueError('Unknown sensor type')
             this_map.register_sensor(sensor)
