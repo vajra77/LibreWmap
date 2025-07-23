@@ -13,8 +13,13 @@
   <body>
     <main>
 	<img class="container" src="{{ map.image }}">
+    {%  if map.alarm %}
+        <audio controls>
+            <source src="audio/alarm.mp3" type="audio/mpeg">
+        </audio>
+    {%  endif %}
 
-	{% for sensor in map.sensors -%}
+        {% for sensor in map.sensors -%}
 	<span class="{{ sensor.name }}">
 	    <p><img class="svg-filter" src="{{ sensor.image }}">{{ sensor.label }}</p>
         <img class="overlay" src="{{ map.nms_url }}/graph.php?id={{ sensor.id }}&type=sensor_{{ sensor.type }}&height=287&width=616">

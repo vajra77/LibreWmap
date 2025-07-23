@@ -29,6 +29,12 @@ class Map:
                 print(f"[ERR]: sensor {sensor.name} = {e}")
                 continue
 
+    @property
+    def alarm(self):
+        result = False
+        for sensor in self.sensors:
+            result = result or sensor.alarm != 'ok'
+        return True
 
     @classmethod
     def from_file(cls, path):
