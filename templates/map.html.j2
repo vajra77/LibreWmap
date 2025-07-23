@@ -14,7 +14,7 @@
     <main>
 	<img class="container" src="{{ map.image }}">
     {%  if map.alarm %}
-        <audio autoplay>
+        <audio autoplay loop="false">
             <source src="audio/alarm.mp3" type="audio/mpeg">
         </audio>
     {%  endif %}
