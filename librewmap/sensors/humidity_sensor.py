@@ -23,7 +23,7 @@ class HumiditySensor(Sensor):
         return "images/drop.svg"
 
     @property
-    def label(self) -> str:
+    def fmt_label(self) -> str:
         return f"{self.last}&percnt;"
 
     def update(self, api_url, api_key):

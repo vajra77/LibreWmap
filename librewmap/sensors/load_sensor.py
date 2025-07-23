@@ -23,7 +23,7 @@ class LoadSensor(Sensor):
         return "images/pwbank.svg"
 
     @property
-    def label(self) -> str:
+    def fmt_label(self) -> str:
         return f"{self.label}/{self.last}&percnt;"
 
     def update(self, api_url, api_key):

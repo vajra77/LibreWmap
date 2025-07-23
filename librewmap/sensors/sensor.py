@@ -18,6 +18,10 @@ class Sensor:
         return "generic"
 
     @property
+    def fmt_label(self) -> str:
+        return self.label
+
+    @property
     def html(self) -> str:
         return ""
 

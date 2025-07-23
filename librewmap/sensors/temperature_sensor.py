@@ -28,7 +28,7 @@ class TemperatureSensor(Sensor):
             return "images/temp.svg"
 
     @property
-    def label(self) -> str:
+    def fmt_label(self) -> str:
         return f"{self.last}ºC"
 
     def update(self, api_url, api_key):
