@@ -32,10 +32,6 @@ class StateSensor(Sensor):
             case _:
                 return ""
 
-    @property
-    def value(self) -> str:
-        return self.name
-
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/state/{self.id}"
         response = requests.get(url=url, headers={"X-Auth-Token": api_key})

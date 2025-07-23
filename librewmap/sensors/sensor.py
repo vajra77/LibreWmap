@@ -1,25 +1,58 @@
-from dataclasses import dataclass, field
 
 
 @dataclass
 class Sensor:
-    id: int
-    device_id: int
-    name: str
-    label: str
-    top: int
-    left: int
-    trend: int
-    last: int or float
-    alarm: str
+
+    def __init__(self, id, device_id, name, label, top, left, trend, last, alarm):
+        self._id = id
+        self._device_id = device_id
+        self._name = name
+        self._label = label
+        self._top = top
+        self._left = left
+        self._trend = trend
+        self._last = last
+        self._alarm = alarm
+
+    @property
+    def id(self) -> str:
+        return self._id
+
+    @property
+    def device_id(self) -> str:
+        return self._device_id
+
+    @property
+    def name(self) -> str:
+        return self._name
+
+    @property
+    def label(self) -> str:
+        return self._label
+
+    @property
+    def top(self) -> str:
+        return self._top
+
+    @property
+    def left(self) -> str:
+        return self._left
+
+    @property
+    def trend(self) -> str:
+        return self._trend
+
+    @property
+    def last(self) -> str:
+        return self._last
+
+    @property
+    def alarm(self) -> str:
+        return self._alarm
 
     @property
     def type(self):
         return "generic"
-
-    @property
-    def fmt_label(self) -> str:
-        return self.label
 
     @property
     def html(self) -> str:

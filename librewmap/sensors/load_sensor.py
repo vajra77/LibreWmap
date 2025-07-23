@@ -23,8 +23,8 @@ class LoadSensor(Sensor):
         return "images/pwbank.svg"
 
     @property
-    def fmt_label(self) -> str:
-        return f"{self.label}/{self.last}&percnt;"
+    def label(self) -> str:
+        return f"{self.label} ({self.last}&percnt;)"
 
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/load/{self.id}"
