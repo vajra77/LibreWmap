@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -6,7 +6,7 @@ class Sensor:
     id: int
     device_id: int
     name: str
-    label: str
+    label: str = field(init=False, repr=False,default="n/a")
     top: int
     left: int
     trend: int
