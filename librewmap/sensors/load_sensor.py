@@ -24,7 +24,7 @@ class LoadSensor(Sensor):
 
     @property
     def label(self) -> str:
-        return f"{self._label} ({self._last}&percnt;)"
+        return f"{self._last}&percnt;"
 
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/load/{self.id}"
