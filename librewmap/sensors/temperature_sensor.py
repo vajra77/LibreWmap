@@ -36,7 +36,7 @@ class TemperatureSensor(Sensor):
         response = requests.get(url=url, headers={"X-Auth-Token": api_key})
         data = response.json()
 
-        t_prev = data['graphs'][0]['sensor_prev']
+        t_prev = data['graphs'][0]['sensor_prev'] or 0
         t_cur = data['graphs'][0]['sensor_current']
         t_warn = data['graphs'][0]['sensor_limit_warn']
         t_crit = data['graphs'][0]['sensor_limit']
