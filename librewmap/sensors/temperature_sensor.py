@@ -10,7 +10,7 @@ class TemperatureSensor(Sensor):
 
     @property
     def color_filter(self):
-        match self.alarm:
+        match self._alarm:
             case "ok":
                 return "invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%)"
             case "warn":
@@ -20,16 +20,16 @@ class TemperatureSensor(Sensor):
 
     @property
     def image(self) -> str:
-        if self.trend > 0:
+        if self._trend > 0:
             return "images/temp_up.svg"
-        elif self.trend < 0:
+        elif self._trend < 0:
             return "images/temp_down.svg"
         else:
             return "images/temp.svg"
 
     @property
     def label(self) -> str:
-        return f"{self.last}ºC"
+        return f"{self._last}ºC"
 
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/temperature/{self.id}"
@@ -48,18 +48,19 @@ class TemperatureSensor(Sensor):
             t_crit = 35.0
 
         if t_prev > t_cur:
-            self.trend = -1
+            self._trend = -1
         elif t_prev < t_cur:
-            self.trend = 1
+            self._trend = 1
         else:
-            self.trend = 0
+            self._trend = 0
 
         if t_warn is not None:
             if t_cur < t_warn:
-                self.alarm = 'ok'
+                self._alarm = 'ok'
             elif t_warn <= t_cur < t_crit:
-                self.alarm = 'warn'
+                self._alarm = 'warn'
             else:
-                self.alarm = 'crit'
+                self._alarm = 'crit'
 
-        self.last = t_cur
+        self._last = t_cur
+

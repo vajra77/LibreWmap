@@ -10,7 +10,7 @@ class StateSensor(Sensor):
 
     @property
     def image(self) -> str:
-        match self.alarm:
+        match self._alarm:
             case "ok":
                 return "images/check.svg"
             case "warn":
@@ -22,7 +22,7 @@ class StateSensor(Sensor):
 
     @property
     def color_filter(self) -> str:
-        match self.alarm:
+        match self._alarm:
             case "ok":
                 return "invert(60%) sepia(51%) saturate(5443%) hue-rotate(86deg) brightness(121%) contrast(125%)"
             case "warn":
@@ -41,10 +41,10 @@ class StateSensor(Sensor):
 
         if t_cur is not None:
             if t_cur == 1:
-                self.alarm = 'crit'
+                self._alarm = 'crit'
             else:
-                self.alarm = 'ok'
+                self._alarm = 'ok'
         else:
-            self.alarm = 'warn'
+            self._alarm = 'warn'
 
-        self.last = t_cur
+        self._last = t_cur

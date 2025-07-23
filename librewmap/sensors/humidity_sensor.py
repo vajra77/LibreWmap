@@ -10,7 +10,7 @@ class HumiditySensor(Sensor):
 
     @property
     def color_filter(self):
-        match self.alarm:
+        match self._alarm:
             case "ok":
                 return "invert(84%) sepia(51%) saturate(289%) hue-rotate(162deg) brightness(99%) contrast(94%)"
             case "warn":
@@ -24,7 +24,7 @@ class HumiditySensor(Sensor):
 
     @property
     def label(self) -> str:
-        return f"{self.last}&percnt;"
+        return f"{self._last}&percnt;"
 
     def update(self, api_url, api_key):
         url = f"{api_url}/devices/{self.device_id}/health/humidity/{self.id}"
@@ -37,18 +37,18 @@ class HumiditySensor(Sensor):
         t_crit = data['graphs'][0]['sensor_limit']
 
         if t_prev > t_cur:
-            self.trend = -1
+            self._trend = -1
         elif t_prev < t_cur:
-            self.trend = 1
+            self._trend = 1
         else:
-            self.trend = 0
+            self._trend = 0
 
         if t_warn is not None:
             if t_cur < t_warn:
-                self.alarm = 'ok'
+                self._alarm = 'ok'
             elif t_warn <= t_cur < t_crit:
-                self.alarm = 'warn'
+                self._alarm = 'warn'
             else:
-                self.alarm = 'crit'
+                self._alarm = 'crit'
 
-        self.last = t_cur
+        self._last = t_cur
