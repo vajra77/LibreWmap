@@ -34,8 +34,8 @@ class PowerSensor(Sensor):
 
         t_prev = data['graphs'][0]['sensor_prev']
         t_cur = data['graphs'][0]['sensor_current']
-        t_warn = data['graphs'][0]['sensor_limit_warn']
-        t_crit = data['graphs'][0]['sensor_limit']
+        t_warn = data['graphs'][0]['sensor_limit_warn'] or 1000
+        t_crit = data['graphs'][0]['sensor_limit'] or 1000
 
         if t_prev > t_cur:
             self._trend = -1
